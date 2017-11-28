@@ -21,5 +21,9 @@ namespace iHRIS.Controllers
         {
             return View();
         }
+        public ActionResult Sample()
+        {
+            return View();
+        }
     }
 }

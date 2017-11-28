@@ -299,6 +299,7 @@
     <Content Include="Views\Software\MstEmployee.cshtml" />
     <Content Include="Scripts\toastr.js.map" />
     <Content Include="Views\Software\MstEmployeeDetail.cshtml" />
+    <Content Include="Views\Software\Sample.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
