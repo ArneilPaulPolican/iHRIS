@@ -1,0 +1,1134 @@
+﻿
+@{
+    ViewBag.Title = "MstEmployeeDetail";
+}
+
+<h2>MstEmployeeDetail</h2>
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading" align="right">
+            <a class="btn btn-default" href="../software/MstEmployee">close</a>
+        </div>
+        <div class="panel-body">
+            <div class="row container">
+                <div class="col-lg-6">
+                    @*<form class="form-horizontal" id="Add-Form">*@
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">ID Number:</label>
+                        <div class="col-sm-5">
+                            <input id="IdNumber" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Last Name:</label>
+                        <div class="col-md-5">
+                            <input id="LastName" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">First Name:</label>
+                        <div class="col-md-5">
+                            <input id="FirstName" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Middle Name:</label>
+                        <div class="col-md-5">
+                            <input id="MiddleName" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Extension NAme:</label>
+                        <div class="col-md-5">
+                            <input id="ExtensionName" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Full Name:</label>
+                        <div class="col-md-5">
+                            <input id="FullName" class="form-control">
+                        </div>
+                    </div>
+                    @*</form>*@
+                </div>
+                <div class="col-lg-6">
+                    <form class="form-horizontal" id="Add-Form"></form>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Biometric Number:</label>
+                        <div class="col-sm-5">
+                            <input id="BiometricIdNumber" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Date Hired:</label>
+                        <div class="col-md-5">
+                            <input id="DateHired" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Date Resigned:</label>
+                        <div class="col-md-5">
+                            <input id="DateResigned" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <button onclick="cmdMenu_OnClick()" type="button" class="btn btn-default col-sm-12" data-toggle="collapse" data-target="#demo">More Info</button>
+                <div id="demo" class="collapse">
+                    <div>
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#home">Genaral Information</a></li>
+                            <li><a data-toggle="tab" href="#menu1" onclick="cmdPayrollInfo">Payroll Information</a></li>
+                            <li><a data-toggle="tab" href="#menu2" onclick="cmdMemo_Onclick()">Memo</a></li>
+                            <li><a data-toggle="tab" href="#menu3" onclick="cmdSiftCode_Onclick()">Shift Code</a></li>
+                            <li><a data-toggle="tab" href="#menu4" onclick="cmdOtherIncome_Onclick()">ther Income</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div id="home" class="tab-pane fade in active">
+                                <h3>General Information</h3>
+                                <div class="row container">
+                                    <div class="col-md-6">
+                                        <form class="form-horizontal" id="Add-Form">
+                                            <div>
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label">Address:</label>
+                                                    <div class="col-md-8">
+                                                        <textarea id="Address" class="form-control" rows="3"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label">Zip Code:</label>
+                                                    <div class="col-md-5">
+                                                        <div id="mstZipCode"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div>
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label">Place Of Birth:</label>
+                                                    <div class="col-md-8">
+                                                        <textarea id="PlaceOfBirth" class="form-control" rows="3"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label">Birth Zip Code:</label>
+                                                    <div class="col-md-5">
+                                                        <div id="PlaceOfBirthZipCodeId" class="form-control"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label">Date Of Birth:</label>
+                                                    <div class="col-md-5">
+                                                        <input id="DateOfBirth" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label">Gender:</label>
+                                                    <div class="col-md-3">
+                                                        <input id="Sex" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <form class="form-horizontal" id="Add-Form">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Phone Number:</label>
+                                                <div class="col-md-5">
+                                                    <input id="PhoneNumber" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Cellphone Number:</label>
+                                                <div class="col-md-5">
+                                                    <input id="CellphoneNumber" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Email Address:</label>
+                                                <div class="col-md-5">
+                                                    <input id="EmailAddress" class="form-control">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <div class="col-md-6">
+                                        <form class="form-horizontal" id="Add-Form">
+
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Civil Status:</label>
+                                                <div class="col-md-5">
+                                                    <input id="CivilStatus" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Citizenship:</label>
+                                                <div class="col-md-5">
+                                                    <input id="CitizinshipId" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Religion:</label>
+                                                <div class="col-md-5">
+                                                    <div id="mstReligion"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Height:</label>
+                                                <div class="col-md-5">
+                                                    <input id="Height" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Weight:</label>
+                                                <div class="col-md-5">
+                                                    <input id="Weight" class="form-control">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="menu1" class="tab-pane fade">
+                                <h3>Payroll Information</h3>
+                                <div class="row container">
+                                    <div class="col-md-6">
+                                        <form class="form-horizontal" id="Add-Form">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">GSIS Number:</label>
+                                                <div class="col-md-5">
+                                                    <input id="GSISNumber" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">SSS Number:</label>
+                                                <div class="col-md-5">
+                                                    <input id="SSSNumber" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">SSS Add-on:</label>
+                                                <div class="col-md-5">
+                                                    <input id="SSSAddOn" class="form-control">
+                                                </div>
+                                            </div>
+                                            @*<div class="form-group">
+                                                    <label class="col-md-4 control-label">SSS Gross Salary:</label>
+                                                </div>*@
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">HDMF Number:</label>
+                                                <div class="col-md-5">
+                                                    <input id="HDMFNumber" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">HDMF Type:</label>
+                                                <div class="col-md-5">
+                                                    <input id="HDMFType" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">HDMF Add-on:</label>
+                                                <div class="col-md-5">
+                                                    <input id="HDMFAddOn" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">PHIC Number:</label>
+                                                <div class="col-md-5">
+                                                    <input id="PHICNumber" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">TIN:</label>
+                                                <div class="col-md-5">
+                                                    <input id="TIN" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Tax Code:</label>
+                                                <div class="col-md-5">
+                                                    <div id="mstTaxCode"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Tax Table:</label>
+                                                <div class="col-md-5">
+                                                    <input id="TaxTable" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">ATM Account No.:</label>
+                                                <div class="col-md-5">
+                                                    <input id="ATMAccountNumber" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Company:</label>
+                                                <div class="col-md-7">
+                                                    <div id="mstCompany"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Branch:</label>
+                                                <div class="col-md-7">
+                                                    <div id="mstBranch"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Department:</label>
+                                                <div class="col-md-7">
+                                                    <div id="mstDepartment"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Position:</label>
+                                                <div class="col-md-7">
+                                                    <div id="mstPosition"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Division:</label>
+                                                <div class="col-md-7">
+                                                    <div id="mstDivision"></div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <form class="form-horizontal" id="Add-Form">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Payroll Group:</label>
+                                                <div class="col-md-5">
+                                                    <div id="mstPayrollGroup"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Payroll Type:</label>
+                                                <div class="col-md-5">
+                                                    <div id="mstPayrollType"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">GL Account:</label>
+                                                <div class="col-md-5">
+                                                    <div id="mstAccount"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Fix No Of Days:</label>
+                                                <div class="col-md-5">
+                                                    <input id="FixNumberOfDays" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Fix No Of Hours:</label>
+                                                <div class="col-md-5">
+                                                    <input id="FixNumberOfHours" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Monthly Rate:</label>
+                                                <div class="col-md-5">
+                                                    <input id="MonthlyRate" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Payroll Rate:</label>
+                                                <div class="col-md-5">
+                                                    <input id="PayrollRate" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Daily Rate:</label>
+                                                <div class="col-md-5">
+                                                    <input id="DailyRate" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Absent Daily Rate:</label>
+                                                <div class="col-md-5">
+                                                    <input id="AbsentDailyRate" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Hourly Rate:</label>
+                                                <div class="col-md-5">
+                                                    <input id="HourlyRate" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Night Hourly Rate:</label>
+                                                <div class="col-md-5">
+                                                    <input id="NightHourlyRate" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Over Time Hourly Rate:</label>
+                                                <div class="col-md-5">
+                                                    <input id="OvertimeHourlyRate" class="form-control">
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <br />
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Over Time Night Hourly Rate:</label>
+                                                <div class="col-md-5">
+                                                    <input id="OverTimeNightHourlyRate" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Tardy Hourly Rate:</label>
+                                                <div class="col-md-5">
+                                                    <input id="TardyHourlyRate" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Shift Code:</label>
+                                                <div class="col-md-5">
+                                                    <input id="ShiftCodeId" class="form-control">
+                                                </div>
+                                            </div>
+                                            @*<div class="form-group">
+                                                    <label class="col-md-4 control-label">Is Minimum Wage:</label>
+                                                </div>*@
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="menu2" class="tab-pane fade">
+                                <h3>Memo</h3>
+                                <div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+
+                                        </div>
+                                        <div class="panel-body">
+                                            <div id="Memo" class="border-wijmo"></div>
+                                        </div>
+                                        <div class="panel-footer">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="menu3" class="tab-pane fade">
+                                <h3>Shift Code</h3>
+                                <div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+
+                                        </div>
+                                        <div class="panel-body">
+                                            <div id="ShiftCode" class="border-wijmo"></div>
+                                        </div>
+                                        <div class="panel-footer">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="menu4" class="tab-pane fade">
+                                <h3>Other Incomde</h3>
+                                <div id="OtherIncome" class="border-wijmo"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/software-js")
+<script type="text/javascript">
+    var EmployeeMemoGrid;
+    var EmployeeMemoList;
+    var EmployeeShiftGrid;
+    var EmployeeShiftList;
+    var EmployeeOtherIncomeGrid;
+    var EmployeeOtherIncomeList;
+
+    function getMstEmployeeDetails() {
+        $.ajax({
+            url: '/api/employee/detail/' + getUrlParameter("id"),
+            cache: false,
+            type: 'GET',
+            contentType: 'application/json;charset=utf-8',
+            success: function (result) {
+                if (result != null) {
+                    document.getElementById("IdNumber").value = result.IdNumber;
+                    document.getElementById("BiometricIdNumber").value = result.BiometricIdNumber;
+                    document.getElementById("LastName").value = result.LastName;
+                    document.getElementById("FirstName").value = result.FirstName;
+                    document.getElementById("MiddleName").value = result.MiddleName;
+                    document.getElementById("ExtensionName").value = result.ExtensionName;
+                    document.getElementById("FullName").value = result.FullName;
+                    document.getElementById("Address").value = result.Address;
+                    cboZipCode.selectedValue = result.ZipCodeId;
+                    document.getElementById("PhoneNumber").value = result.PhoneNumber;
+                    document.getElementById("CellphoneNumber").value = result.CellphoneNumber;
+                    document.getElementById("EmailAddress").value = result.EmailAddress;
+                    document.getElementById("DateOfBirth").value = result.DateOfBirth;
+                    document.getElementById("PlaceOfBirth").value = result.PlaceOfBirth;
+                    document.getElementById("PlaceOfBirthZipCodeId").value = result.PlaceOfBirthZipCodeId;
+                    document.getElementById("DateHired").value = result.DateHired;
+                    document.getElementById("DateResigned").value = result.DateResigned;
+                    document.getElementById("Sex").value = result.Sex;
+                    document.getElementById("CivilStatus").value = result.CivilStatus;
+                    document.getElementById("CitizinshipId").value = result.CitizinshipId;
+                    cboReligion.selectedValue = result.ReligionId;
+                    document.getElementById("Height").value = result.Height;
+                    document.getElementById("Weight").value = result.Weight;
+                    document.getElementById("GSISNumber").value = result.GSISNumber;
+                    document.getElementById("SSSNumber").value = result.SSSNumber;
+                    document.getElementById("HDMFNumber").value = result.HDMFNumber;
+                    document.getElementById("PHICNumber").value = result.PHICNumber;
+                    document.getElementById("TIN").value = result.TIN;
+                    cboTaxCode.selectedValue = result.TaxCodeId;
+                    document.getElementById("ATMAccountNumber").vaue = result.ATMAccountNumber;
+                    cboCompany.selectedValue = result.CompanyId;
+                    cboBranch.selectedValue = result.BranchId;
+                    cboDepartment.selectedValue = result.DepartmentId;
+                    cboDivision.selectedValue = result.DivisionId;
+                    cboPosition.selectedValue = result.PositionId;
+                    cboPayrollGroup.selectedValue = result.PayrollGroupId;
+                    cboAccount.selectedValue = result.AccountId;
+                    cboPayrollType.selectedValue = result.PayrollTypeId;
+                    document.getElementById("ShiftCodeId").value = result.ShiftCodeId;
+                    document.getElementById("FixNumberOfDays").value = result.FixNumberOfDays;
+                    document.getElementById("FixNumberOfHours").value = result.FixNumberOfHours;
+                    document.getElementById("MonthlyRate").value = result.MonthlyRate;
+                    document.getElementById("PayrollRate").value = result.PayrollRate;
+                    document.getElementById("DailyRate").value = result.DailyRate;
+                    document.getElementById("AbsentDailyRate").value = result.AbsentDailyRate;
+                    document.getElementById("HourlyRate").value = result.HourlyRate;
+                    document.getElementById("NightHourlyRate").value = result.NightHourlyRate;
+                    document.getElementById("OvertimeHourlyRate").value = result.OvertimeHourlyRate;
+                    document.getElementById("OvertimeNightHourlyRate").value = result.OvertimeNightHourlyRate;
+                    document.getElementById("TardyHorlyRate").value = result.TardyHourlyRate;
+                    document.getElementById("EntryUserId").value = result.EntryUserId;
+                    document.getElementById("EntryDateTime").value = result.EntryDateTime;
+                    document.getElementById("UpdateUserId").value = result.UpdateUserId;
+                    document.getElementById("UpdateDateTime").value = result.UpdateDateTime;
+                    document.getElementById("IsLocked").value = result.IsLocked;
+                    document.getElementById("TaxTable").value = result.TaxTable;
+                    document.getElementById("HDMFAddOn").value = result.HDMFAddOn;
+                    document.getElementById("SSSAddOn").value = result.SSSAddOn;
+                    document.getElementById("HDMFType").value = result.HDMFType;
+                    document.getElementById("SSSIsGrossAmount").value = result.SSSIsGrossAmount;
+                    document.getElementById("IsMinimumWageEarner").value = result.IsMinimumWageEarner;
+
+                } else {
+                    alert("Record has no Data");
+                    window.history.back();
+                }
+            }
+        });
+
+    }
+
+    //=========================================================================================
+    //========================================================================================
+    // Combo Boxes
+
+    function getBranch() {
+        var branchList = new Array();
+        $.ajax({
+            url: '/api/branch/list',
+            cache: false,
+            type: 'GET',
+            contentType: 'application/json;charset=utf-8',
+            data: {},
+            success: function (branchresult) {
+                if (branchresult.length > 0) {
+                    for (i = 0; i < branchresult.length; i++) {
+                        branchList.push({
+                            Id: branchresult[i]["Id"],
+                            Branch: branchresult[i]["Branch"]
+                        });
+                    }
+                }
+                cboBranch = new wijmo.input.ComboBox('#mstBranch', {
+                    placeholder: 'Select',
+                    itemsSource: branchList,
+                    isEditable: false,
+                    isRequired: true,
+                    displayMemberPath: "Branch",
+                    selectedValuePath: "Id",
+                });
+                getMstEmployeeDetails();
+            }
+        });
+    }
+    function getCompany() {
+        var companyList = new Array();
+        $.ajax({
+            url: '/api/company/list',
+            cache: false,
+            type: 'GET',
+            contentType: 'application/json;charset=utf-8',
+            data: {},
+            success: function (companyresult) {
+                if (companyresult.length > 0) {
+                    for (i = 0; i < companyresult.length; i++) {
+                        companyList.push({
+                            Id: companyresult[i]["Id"],
+                            Company: companyresult[i]["Company"]
+                        });
+                    }
+                }
+                cboCompany = new wijmo.input.ComboBox('#mstCompany', {
+                    placeholder: "Select",
+                    itemsSource: companyList,
+                    isEditable: false,
+                    isRequired: true,
+                    displayMemberPath: "Company",
+                    selectedValuePath: "Id",
+                });
+                getBranch();
+            }
+        });
+    }
+    function getDepartment() {
+        var departmentList = new Array();
+        $.ajax({
+            url: '/api/department/list',
+            cache: false,
+            type: 'GET',
+            contentType: 'application/json;charset=utf-8',
+            data: {},
+            success: function (departmentresult) {
+                if (departmentresult.length > 0) {
+                    for (i = 0; i < departmentresult.length; i++) {
+                        departmentList.push({
+                            Id: departmentresult[i]["Id"],
+                            Department: departmentresult[i]["Department"]
+                        });
+                    }
+                }
+                cboDepartment = new wijmo.input.ComboBox('#mstDepartment', {
+                    placeholder: "Select",
+                    itemsSource: departmentresult,
+                    isEditable: false,
+                    isRequired: true,
+                    displayMemberPath: "Department",
+                    selectedValuePath: "Id",
+                });
+                getCompany();
+            }
+        });
+    }
+    function getDivision() {
+        var divisionList = new Array();
+        $.ajax({
+            url: '/api/division/list',
+            cache: false,
+            type: 'GET',
+            contentType: 'application/json;charset=utf-8',
+            data: {},
+            success: function (divisionresult) {
+                if (divisionresult.length > 0) {
+                    for (i = 0; i < divisionresult.length; i++) {
+                        divisionList.push({
+                            Id: divisionresult[i]["Id"],
+                            Division: divisionresult[i]["Division"]
+                        });
+                    }
+                }
+                cboDivision = new wijmo.input.ComboBox('#mstDivision', {
+                    placeholder: "Select",
+                    itemsSource: divisionList,
+                    isEditable: false,
+                    isRequired: true,
+                    displayMemberPath: "Division",
+                    selectedValuePath: "Id",
+                });
+                getDepartment();
+            }
+        });
+    }
+    function getPosition() {
+        var positionList = new Array();
+        $.ajax({
+            url: '/api/position/list',
+            cache: false,
+            type: 'GET',
+            contentType: 'application/json;charset=utf-8',
+            data: {},
+            success: function (positionresult) {
+                if (positionresult.length > 0) {
+                    for (i = 0; i < positionresult.length; i++) {
+                        positionList.push({
+                            Id: positionresult[i]["Id"],
+                            Position: positionresult[i]["Position"]
+                        });
+                    }
+                }
+                cboPosition = new wijmo.input.ComboBox('#mstPosition', {
+                    placeholder: "Select",
+                    itemsSource: positionList,
+                    isEditable: false,
+                    isRequired: true,
+                    displayMemberPath: "Position",
+                    selectedValuePath: "Id",
+                });
+                getDivision();
+            }
+        });
+    }
+    function getReligion() {
+        var religionList = new Array();
+        $.ajax({
+            url: '/api/religion/list',
+            cache: false,
+            type: 'GET',
+            contentType: 'application/json;charset=utf-8',
+            data: {},
+            success: function (religionresult) {
+                if (religionresult.length > 0) {
+                    for (i = 0; i < religionresult.length; i++) {
+                        religionList.push({
+                            Id: religionresult[i]["Id"],
+                            Religion: religionresult[i]["Religion"]
+                        });
+                    }
+                }
+                cboReligion = new wijmo.input.ComboBox('#mstReligion', {
+                    placeholder: "Select",
+                    itemsSource: religionList,
+                    isEditable: false,
+                    isRequired: true,
+                    displayMemberPath: "Religion",
+                    selectedValuePath: "Id",
+                });
+                getPosition();
+            }
+        });
+    }
+
+    function getAccount() {
+        var accountList = new Array();
+        $.ajax({
+            url: '/api/account/list',
+            cache: false,
+            type: 'GET',
+            contentType: 'application/json;charset=utf-8',
+            data: {},
+            success: function (accountresult) {
+                if (accountresult.length > 0) {
+                    for (i = 0; i < accountresult.length; i++) {
+                        accountList.push({
+                            Id: accountresult[i]["Id"],
+                            AccountCode: accountresult[i]["AccountCode"],
+                            Account: accountresult[i]["Account"]
+                        });
+                    }
+                }
+                cboAccount = new wijmo.input.ComboBox('#mstAccount', {
+                    placeholder: "Select",
+                    itemsSource: accountList,
+                    isEditable: false,
+                    isRequired: true,
+                    displayMemberPath: "AccountCode",/* + " " + "Account",*/
+                    selectedValuePath: "Id",
+                });
+                getReligion();
+            }
+        });
+    }
+    function getPayrollGroup() {
+        var payrollgroupList = new Array();
+        $.ajax({
+            url: '/api/payrollgroup/list',
+            cache: false,
+            type: 'GET',
+            contentType: 'application/json;charset=utf-8',
+            data: {},
+            success: function (payrolllgroupresult) {
+                if (payrolllgroupresult.length >= 0) {
+                    for (i = 0; i < payrolllgroupresult.length; i++) {
+                        payrollgroupList.push({
+                            Id: payrolllgroupresult[i]["Id"],
+                            PayrollGroup: payrolllgroupresult[i]["PayrollGroup"]
+                        });
+                    }
+                }
+                cboPayrollGroup = new wijmo.input.ComboBox('#mstPayrollGroup', {
+                    placeholder: "Select",
+                    itemsSource: payrollgroupList,
+                    isEditable: false,
+                    isRequired: true,
+                    displayMemberPath: "PayrollGroup",
+                    selectedValuePath: "Id",
+                });
+                getAccount();
+            }
+        });
+    }
+    function getPayrollType() {
+        var payrolltypeList = new Array();
+        $.ajax({
+            ur: '/api/payrolltype/list',
+            cache: false,
+            contentType: 'application/json;charset=utf-8',
+            type: 'GET',
+            data: {},
+            success: function (payrolltyperesult) {
+                if (payrolltyperesult.length > 0) {
+                    for (i = 0; i < payrolltyperesult.length; i++) {
+                        payrolltypeList.push({
+                            Id: payrolltyperesult[i]["Id"],
+                            PayrollType: payrolltyperesult[i]["PayrollType"]
+                        });
+                    }
+                }
+                cboPayrollType = new wijmo.input.ComboBox('#mstPayrollType', {
+                    placeholder: "Select",
+                    itemsSource: payrolltypeList,
+                    isEditable: false,
+                    isRequired: true,
+                    displayMemberPath: "PayrollType",
+                    selectedValuePath: "Id",
+                });
+                getPayrollGroup();
+            }
+        });
+    }
+    function getZipCode() {
+        var zipcodeList = new Array();
+        $.ajax({
+            url: '/api/zipcode/list',
+            cache: false,
+            type: 'GET',
+            contentType: 'application/json;charset=utf-8',
+            data: {},
+            success: function (zipcoderesult) {
+                if (zipcoderesult.length > 0) {
+                    for (i = 0; i < zipcoderesult.length; i++) {
+                        zipcodeList.push({
+                            Id: zipcoderesult[i]["Id"],
+                            ZipCode: zipcoderesult[i]["ZipCode"],
+                            Location: zipcoderesult[i]["Location"]
+                        });
+                    }
+                }
+                cboZipCode = new wijmo.input.ComboBox('#mstZipCode', {
+                    placeholder: "Select",
+                    itemsSource: zipcodeList,
+                    isEditable: false,
+                    isRequired: true,
+                    displayMemberPath: "ZipCode",/*&" "&"Location",*/
+                    selectedValuePath: "Id",
+                });
+                getPayrollType();
+            }
+        });
+    }
+    function getTaxCode() {
+        var taxcodeList = new Array();
+        $.ajax({
+            url: '/api/taxcode/list',
+            cache: false,
+            type: 'GET',
+            contentType: 'application/json;charset=utf-8',
+            data: {},
+            success: function (taxcoderesult) {
+                if (taxcoderesult.length > 0) {
+                    for (i = 0; i < taxcoderesult.length; i++) {
+                        taxcodeList.push({
+                            Id: taxcoderesult[i]["Id"],
+                            TaxCode: taxcoderesult[i]["TaxCode"],
+                            ExemptionAmount: taxcoderesult[i]["ExemptionAmount"],
+                            DependentAmount: taxcoderesult[i]["DependentAmount"]
+                        });
+                    }
+                }
+                cboTaxCode = new wijmo.input.ComboBox('#mstTaxCode', {
+                    placeholder: "Select",
+                    itemsSource: taxcodeList,
+                    isEditable: false,
+                    isRequired: true,
+                    displayMemberPath: "TaxCode",/* & "ExemptionAmount" & "DependentAmount",*/
+                    selectedValuePath: "Id",
+                });
+                getZipCode();
+            }
+        });
+    }
+
+    //================================================================================================
+    //================================================================================================
+    //                      List View Sub
+    // Shift Code
+    function getMstEmployeeShiftCode() {
+        var mstEmployeeShiftList = new wijmo.collections.ObservableArray();
+        $.ajax({
+            url: '/api/employeeshift/list',
+            cache: false,
+            type: 'GET',
+            contentType: 'application/json:charset=utf-8',
+            data: {},
+            success: function (result) {
+                if (result.length > 0) {
+                    for (var i = 0; i < result.length; i++) {
+                        mstEmployeeShiftList.push({
+                            EditId: "<button class='btn btn-primary btn-xs btn-block' id='AppEditButton' onClick='cmdEditButton_OnClick()'><i class='glyphicon glyphicon-pencil'></i> Edit</button>",
+                            DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='AppDeleteButton' onClick='cmddeleteButton_Onclick()'><i class='glyphicon glyphicon-trash'></i> Delete</button>",
+                            Id: result[i]["Id"],
+                            EmployeeId: result[i]["EmployeeId"],
+                            ShiftCodeId: result[i]["ShiftCodeId"]
+                        });
+                    }
+                }
+
+                //cboShiftCode = new wijmo.input.ComboBox('mstShiftCode', {
+                //    placeholder: "Select",
+                //    itemsSource: mstEmployeeShiftList,
+                //    isEditable: false,
+                //    isRequired: true,
+                //    selectedValuePath: "Id",
+                //    displayMemberPath:"Sh"
+                //});
+            }
+        });
+        return mstEmployeeShiftList;
+    }
+    function ShiftList() {
+        EmployeeShiftList = new wijmo.collections.CollectionView(getMstEmployeeShiftCode());
+        EmployeeShiftList.pageSize = 15;
+
+        EmployeeShiftGrid = new wijmo.grid.FlexGrid('#ShiftCode');
+        EmployeeShiftGrid.initialize({
+            columns: [{
+                "header": "Edit",
+                "binding": "EditId",
+                "align": "left",
+                "width": "1*",
+                "isContentHtml": true
+            },
+            {
+                "header": "Delete",
+                "binding": "DeleteId",
+                "align": "left",
+                "width": "1*",
+                "isContentHtml": true
+            },
+            {
+                "header": "Shift Code",
+                "binding": "ShiftCodeId",
+                "align": "Left",
+                "width": "5*"
+            }],
+            autoGenerateColumns: false,
+            itemsSource: EmployeeShiftList,
+            isReadOnly: true,
+            autoSizeMode: wijmo.grid.AutoSizeMode.Both,
+            allowDragging: wijmo.grid.AllowDragging.None,
+            selectionMode: wijmo.grid.SelectionMode.Row
+        });
+        EmployeeShiftGrid.trackChanges = true;
+    };
+
+
+    //    Memo
+    function getMstEmployeeMemoList() {
+        var mstEmployeeMemoList = new wijmo.collections.ObservableArray();
+        $.ajax({
+            url: '/api/employeememo/list',
+            cache: false,
+            type: 'GET',
+            contentType: 'application/json:charset=utf-8',
+            data: {},
+            success: function (result) {
+                if (result.length > 0) {
+                    for (var i = 0; i < result.length; i++) {
+                        mstEmployeeMemoList.push({
+                            EditId: "<button class='btn btn-primary btn-xs btn-block' id='AppEditButton' onClick='cmdEditButton_OnClick()'><i class='glyphicon glyphicon-pencil'></i> Edit</button>",
+                            DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='AppDeleteButton' onClick='cmddeleteButton_Onclick()'><i class='glyphicon glyphicon-trash'></i> Delete</button>",
+                            Id: result[i]["Id"],
+                            EmployeeId: result[i]["EmployeeId"],
+                            MemoDate: result[i]["MemoDate"],
+                            MemoSubject: result[i]["MemoSubject"],
+                            MemoContent: result[i]["MemoContent"],
+                            PreparedBy: result[i]["PreaparedBy"],
+                            ApprovedBy: result[i]["ApprovedBy"]
+                        });
+                    }
+                }
+            }
+        });
+        return mstEmployeeMemoList;
+    }
+    function MemoList() {
+        EmployeeMemoList = new wijmo.collections.CollectionView(getMstEmployeeMemoList());
+        EmployeeMemoList.pageSize = 15;
+
+        EmployeeMemoGrid = new wijmo.grid.FlexGrid('#Memo');
+        EmployeeMemoGrid.initialize({
+            columns: [{
+                "header": "Edit",
+                "binding": "EditId",
+                "align": "left",
+                "width": "1*",
+                "isContentHtml": true
+            },
+            {
+                "header": "Delete",
+                "binding": "DeleteId",
+                "align": "left",
+                "width": "1*",
+                "isContentHtml": true
+            },
+            {
+                "header": "Memo Date",
+                "binding": "MemoDate",
+                "align": "Left",
+                "width": "5*"
+            },
+            {
+                "header": "Memo Subject",
+                "binding": "MEmoSubject",
+                "align": "Left",
+                "width": "5*"
+            }],
+            autoGenerateColumns: false,
+            itemsSource: EmployeeMemoList,
+            isReadOnly: true,
+            autoSizeMode: wijmo.grid.AutoSizeMode.Both,
+            allowDragging: wijmo.grid.AllowDragging.None,
+            selectionMode: wijmo.grid.SelectionMode.Row
+        });
+        EmployeeMemoGrid.trackChanges = true;
+    };
+
+
+    //  Other Income
+    function getMstEmployeeOtherIncome() {
+        var mstEmployeeOtherIncome = new wijmo.collections.ObservableArray();
+        $.ajax({
+            url: '/api/employeeotherincome/list',
+            cache: false,
+            type: 'GET',
+            contentType: 'application/json:charset=utf-8',
+            data: {},
+            success: function (result) {
+                if (result.length > 0) {
+                    for (var i = 0; i < result.length; i++) {
+                        mstEmployeeOtherIncome.push({
+                            EditId: "<button class='btn btn-primary btn-xs btn-block' id='AppEditButton' onClick='cmdEditButton_OnClick()'><i class='glyphicon glyphicon-pencil'></i> Edit</button>",
+                            DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='AppDeleteButton' onClick='cmddeleteButton_Onclick()'><i class='glyphicon glyphicon-trash'></i> Delete</button>",
+                            Id: result[i]["Id"],
+                            EmployeeId: result[i]["EmployeeId"],
+                            OtherIncomeId: result[i]["OtherIncomeId"],
+                            Amount: result[i]["Amount"],
+                            Remarks: result[i]["Remarks"]
+                        });
+                    }
+                }
+            }
+        });
+        return mstEmployeeOtherIncome;
+    }
+
+    function OtherIncome() {
+        EmployeeOtherIncomeList = new wijmo.collections.CollectionView(getMstEmployeeOtherIncome());
+        EmployeeOtherIncomeList.pageSize = 15;
+
+        EmployeeOtherIncomeGrid = new wijmo.grid.FlexGrid('#OtherIncome');
+        EmployeeOtherIncomeGrid.initialize({
+            columns: [{
+                "header": "Edit",
+                "binding": "EditId",
+                "align": "left",
+                "width": "1*",
+                "isContentHtml": true
+            },
+            {
+                "header": "Delete",
+                "binding": "DeleteId",
+                "align": "left",
+                "width": "1*",
+                "isContentHtml": true
+            },
+            {
+                "header": "Amount",
+                "binding": "Amount",
+                "align": "Left",
+                "width": "5*"
+            },
+            {
+                "header": "Remarks",
+                "binding": "Remarks",
+                "align": "Left",
+                "width": "5*"
+            }],
+            autoGenerateColumns: false,
+            itemsSource: EmployeeOtherIncomeList,
+            isReadOnly: true,
+            autoSizeMode: wijmo.grid.AutoSizeMode.Both,
+            allowDragging: wijmo.grid.AllowDragging.None,
+            selectionMode: wijmo.grid.SelectionMode.Row
+        });
+        EmployeeOtherIncomeGrid.trackChanges = true;
+    };
+    window.onload = function () {
+        MemoList();
+        ShiftList();
+        OtherIncome();
+        //getBranch();
+        //getCompany();
+        //getDepartment();
+        //getDivision();
+        //getPosition();
+        //getReligion();
+        //getAccount();
+        //getPayrollGroup();
+        //getPayrollType();
+        //getZipCode();
+        //getMstEmployeeDetails();
+    }
+    function cmdPayrollInfo() {
+
+    } function cmdMenu_OnClick() {
+        getTaxCode();
+    }
+
+    function cmdMemo_Onclick() {
+        setTimeout(function () {
+            EmployeeMemoList = new wijmo.collections.CollectionView(getMstEmployeeMemoList());
+            EmployeeMemoList.pageSize = 15;
+            EmployeeMemoGrid.itemsSource = EmployeeMemoList,
+                EmployeeMemoGrid.trackChanges = true;
+        }, 500);
+    }
+    function cmdSiftCode_Onclick() {
+        setTimeout(function () {
+            EmployeeShiftList = new wijmo.collections.CollectionView(getMstEmployeeShiftCode());
+            EmployeeShiftList.pageSize = 15;
+            EmployeeShiftGrid.itemsSource = EmployeeShiftList,
+                EmployeeShiftGrid.trackChanges = true;
+
+        }, 500);
+    }
+    function cmdOtherIncome_Onclick() {
+        setTimeout(function () {
+            EmployeeOtherIncomeList = new wijmo.collections.CollectionView(getMstEmployeeOtherIncome());
+            EmployeeOtherIncomeList.pageSize = 15;
+            EmployeeOtherIncomeGrid.itemsSource = EmployeeOtherIncomeList,
+                EmployeeOtherIncomeGrid.trackChanges = true;
+        }, 500);
+    }
+</script>

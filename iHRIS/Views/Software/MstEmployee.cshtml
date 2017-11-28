@@ -1,0 +1,173 @@
+﻿
+@{
+    ViewBag.Title = "MstEmployee";
+}
+
+<h2>MstEmployee</h2>
+<div>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>Employee</h3>
+            </div>
+            <div class="panel-body">
+                <div id="MstEmployeeList" class="border-wijmo"></div>
+            </div>
+            <div class="panel-footer">
+                <h3>Footer</h3>
+            </div>
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/software-js")
+<script type="text/javascript">
+    var EmployeeList;
+    var EmployeeGrid;
+    var EmployeeCollectionView;
+
+
+
+    //get details
+    function EditEmployee_Onclick() {
+        EmployeeList.editItem(EmployeeList.currentItem);
+        var CurrentEmployeeItem = EmployeeList.currentItem;
+        window.location = '/Software/MstEmployeeDetail?id=' + CurrentEmployeeItem.Id;
+    }
+
+    //Get List Of Employee
+    function getMstEmployee() {
+        var MstEmployeeList = new wijmo.collections.ObservableArray();
+        $.ajax({
+            url: '/api/employee/list',
+            cache: false,
+            type: 'GET',
+            contentType: 'application/json:charset=utf-8',
+            data: {},
+            success: function (result) {
+                if (result.length > 0) {
+                    for (var i = 0; i < result.length; i++) {
+                        MstEmployeeList.push({
+                            EditId: "<button class='btn btn-primary btn-xs btn-block' id='AppEditButton' onClick='EditEmployee_Onclick()'><i class='glyphicon glyphicon-pencil'></i> Edit</button>",
+                            DeleteId: "<button class='btn btn-danger btn-xs btn-block' id='AppDeleteButton' onClick='cmddeleteButton_Onclick()'><i class='glyphicon glyphicon-trash'></i> Delete</button>",
+                            Id: result[i]["Id"],
+                            IdNumber: result[i]["IdNumber"],
+                            BiometricIdNumber: result[i]["BiometricIdNumber"],
+                            LastName: result[i]["LastName"],
+                            FirstName: result[i]["FirstName"],
+                            MiddleName: result[i]["MiddleName"],
+                            ExtensionName: result[i]["ExtensionName"],
+                            FullName: result[i]["FullName"],
+                            Address: result[i]["Address"],
+                            ZipCodeId: result[i]["ZipCodeId"],
+                            PhoneNumber: result[i]["PhoneNumber"],
+                            CellphoneNumber: result[i]["CellphoneNumber"],
+                            EmailAddress: result[i]["EmailAddress"],
+                            DateOfBirth: result[i]["DateOfBirth"],
+                            PlaceOfBirth: result[i]["PlcaeOfBirth"],
+                            PlaceOfBirthZipCodeId: result[i]["PlaceOfBirthZipCodeId"],
+                            DateHired: result[i]["DateHired"],
+                            DateResigned: result[i]["DateResigned"],
+                            Sex: result[i]["Sex"],
+                            CivilStatus: result[i]["CivilStatus"],
+                            CitizinshipId: result[i]["CiizinshipId"],
+                            ReligionId: result[i]["ReligionId"],
+                            Height: result[i]["Height"],
+                            Weight: result[i]["Weight"],
+                            GSISNumber: result[i]["GSISNumber"],
+                            SSSNumber: result[i]["SSSNumber"],
+                            HDMFNumber: result[i]["HDMFNumber"],
+                            PHICNumber: result[i]["PHICNumber"],
+                            TIN: result[i]["TIN"],
+                            TaxCodeId: result[i]["TaxCodeId"],
+                            ATMAccountNumber: result[i]["ATMAccountNumber"],
+                            CompanyId: result[i]["CompanyId"],
+                            BranchId: result[i]["BranchId"],
+                            DepartmentId: result[i]["DepartmentId"],
+                            DivisionId: result[i]["DivisionId"],
+                            PositionId: result[i]["PositionId"],
+                            PayrollGroupId: result[i]["PayrollGroupId"],
+                            AccountId: result[i]["AccountId"],
+                            PayrollTypeId: result[i]["PayrollTypeId"],
+                            ShiftCodeId: result[i]["ShiftCodeId"],
+                            FixNumberOfDays: result[i]["FixNumberOfDays"],
+                            FixNumberOfHours: result[i]["FixNumberOfHours"],
+                            MonthlyRate: result[i]["MonthlyRate"],
+                            PayrollRate: result[i]["PayrollRate"],
+                            DailyRate: result[i]["DailyRate"],
+                            AbsentDailyRate: result[i]["AbsentDailyRate"],
+                            HourlyRate: result[i]["HourlyRate"],
+                            NightHourlyRate: result[i]["NightHourlyRate"],
+                            OverTimeHourlyRate: result[i]["OverTimeHourlyRate"],
+                            OverTimeNightHourlyRate: result[i]["OverTimeNightHourlyRate"],
+                            TardyHourlyRate: result[i]["TardyHourlyRate"],
+                            EntryUserid: result[i]["EntryUserId"],
+                            EntryDateTime: result[i]["EntryDateTime"],
+                            UpdateUserId: result[i]["UpdateUserId"],
+                            UpdateDateTime: result[i]["UpdateDateTime"],
+                            IsLocked: result[i]["IsLocked"],
+                            TaxTable: result[i]["TaxTable"],
+                            HDMFAddOn: result[i]["HDMFAddOn"],
+                            SSSAddOn: result[i]["SSSAddOn"],
+                            HDMFType: result[i]["HDMFType"],
+                            SSSIsGrossAmount: result[i]["SSSIsGrossAmount"],
+                            IsMinimumWageEarner: result[i]["IsMinimumWageEarner"]
+                        });
+                    }
+                }
+            }
+        });
+        return MstEmployeeList;
+    }
+    function List() {
+        EmployeeList = new wijmo.collections.CollectionView(getMstEmployee());
+        EmployeeList.pageSize = 15;
+
+        EmployeeGrid = new wijmo.grid.FlexGrid('#MstEmployeeList');
+        EmployeeGrid.initialize({
+            columns: [{
+                "header": "Edit",
+                "binding": "EditId",
+                "align": "left",
+                "width": "1*",
+                "isContentHtml": true
+            },
+            {
+                "header": "Delete",
+                "binding": "DeleteId",
+                "align": "left",
+                "width": "1*",
+                "isContentHtml": true
+            },
+            {
+                "header": "Name",
+                "binding": "FullName",
+                "align": "Left",
+                "width":"5*"
+            },
+            {
+                "header": "Address",
+                "binding": "Address",
+                "align": "Left",
+                "width": "9*"
+            },
+            {
+                "header": "L",
+                "binding": "IsLocked",
+                "allowSorting": true,
+                "width": "1*"
+            }],
+            autoGenerateColumns: false,
+            itemsSource: EmployeeList,
+            isReadOnly: true,
+            autoSizeMode: wijmo.grid.AutoSizeMode.Both,
+            allowDragging: wijmo.grid.AllowDragging.None,
+            selectionMode: wijmo.grid.SelectionMode.Row
+        });
+        EmployeeGrid.trackChanges = true;
+    };
+    window.onload = function () {
+        List();
+    }
+</script>
+
